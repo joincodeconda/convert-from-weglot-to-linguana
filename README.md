@@ -1,6 +1,6 @@
 # Convert Weglot Translations to Linguana Format
 
-This Python script converts exported Weglot translation files into the format expected by Linguana.
+This Python script converts exported Weglot translation files into the format expected by [Linguana](https://www.linguana.io).
 
 ## Usage
 
@@ -11,7 +11,7 @@ python convert_from_weglot_to_linguana.py /path/to/input/file.csv /path/to/outpu
 ```
 
 ### Parameters
-- `/path/to/input/file.csv`: The path to your exported Weglot translations CSV.
+- `/path/to/input/file.csv`: The path to your exported [Weglot](https://www.weglot.com) translations CSV.
 - `/path/to/output/file.csv`: The desired path and file name for the output CSV.
 
 Make sure to replace these placeholders with actual file paths.
@@ -51,6 +51,10 @@ If an error occurs during conversion, the script will print an error message and
 ## Notes
 - The script assumes that the Weglot CSV file uses a semicolon (`;`) as the delimiter.
 - The output file will use a pipe (`|`) delimiter.
+
+## Learn More
+- Read more about [Linguana](https://www.linguana.io)
+- Sign up for Linguana at [app.linguana.io/sign-up](https://app.linguana.io/sign-up)
 
 ## License
 This script is provided as-is, without any warranty or guarantee. Use at your own risk.
