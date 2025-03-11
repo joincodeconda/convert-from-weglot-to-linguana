@@ -14,7 +14,7 @@ python convert_from_weglot_to_linguana.py /path/to/input/file.csv /path/to/outpu
 - `/path/to/input/file.csv`: The path to your exported [Weglot](https://www.weglot.com) translations CSV.
 - `/path/to/output/file.csv`: The desired path and file name for the output CSV.
 
-Make sure to replace these placeholders with actual file paths.
+Make sure to replace these placeholders with actual file paths. Refer to [Weglot's documentation](https://www.weglot.com/academy/import-export-translations) for instructions on how to export translations.
 
 ## Conversion Details
 The script reads the Weglot CSV file and transforms its fields into the following format for Linguana:
