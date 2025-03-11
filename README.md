@@ -54,7 +54,7 @@ If an error occurs during conversion, the script will print an error message and
 
 ## Learn More
 - Read more about [Linguana](https://www.linguana.io)
-- Sign up for Linguana [here](https://app.linguana.io/sign-up)
+- [Sign up for Linguana here](https://app.linguana.io/sign-up)
 
 ## License
 This script is provided as-is, without any warranty or guarantee. Use at your own risk.
