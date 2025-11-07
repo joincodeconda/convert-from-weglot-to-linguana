@@ -50,7 +50,7 @@ def main():
             output_file, mode="w", encoding="utf-8", newline=""
         ) as outfile:
             reader = csv.DictReader(infile, delimiter=";")
-            writer = csv.writer(outfile, delimiter="|")
+            writer = csv.writer(outfile, delimiter="|", quoting=csv.QUOTE_ALL)
 
             writer.writerow(
                 [
