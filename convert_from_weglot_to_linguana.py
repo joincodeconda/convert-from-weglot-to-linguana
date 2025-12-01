@@ -16,23 +16,43 @@ def convert_row(row):
     """
     Mapping function to convert original fields to target format
     """
+    # Skip malformed rows where type field contains translation text
+    if row["type"] not in ["Text", "Meta (SEO)"]:
+        return None
+    
     text = row["word_from"]
     ai_translation = row["word_to"] if row["quality"] == "Automatic" else ""
     manual_translation = row["word_to"] if row["quality"] != "Automatic" else ""
-    text_type = row["type"].upper() if row["type"] else "TEXT"
-    attribute_name = "content" if text_type == "ATTRIBUTE" else ""
-    parsed_element_type = (
-        "meta" if row["type"] == "Meta (SEO)" else row["url"].strip("/")
-    )
-
-    return [
-        text,
-        ai_translation,
-        manual_translation,
-        text_type,
-        attribute_name,
-        parsed_element_type,
-    ]
+    
+    # Map Weglot types to Linguana format
+    if row["type"] == "Meta (SEO)":
+        # Return both ATTRIBUTE and TEXT entries for Meta (SEO)
+        attribute_row = [
+            text,
+            ai_translation,
+            manual_translation,
+            "ATTRIBUTE",
+            "content",
+            "meta",
+        ]
+        text_row = [
+            text,
+            ai_translation,
+            manual_translation,
+            "TEXT",
+            "",
+            "",
+        ]
+        return [attribute_row, text_row]
+    else:  # row["type"] == "Text"
+        return [[
+            text,
+            ai_translation,
+            manual_translation,
+            "TEXT",
+            "",
+            "",
+        ]]
 
 
 def main():
@@ -64,7 +84,10 @@ def main():
             )
 
             for row in reader:
-                writer.writerow(convert_row(row))
+                converted_rows = convert_row(row)
+                if converted_rows is not None:
+                    for converted_row in converted_rows:
+                        writer.writerow(converted_row)
 
         print("Conversion complete! Check the output file.")
     except Exception as e:
